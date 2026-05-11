@@ -13,6 +13,7 @@
 | 화면 설계서 | `docs/plan/pages/` |
 | IA | `docs/plan/IA.md` |
 | 사용자 시나리오 | `docs/plan/scenario.md` |
+| API 명세 | `docs/api/` |
 
 ---
 
@@ -50,36 +51,70 @@
 베이스 패키지: `src/main/java/com/example/naver`
 
 ```
-com.example.naver
+src/main/java/{base-package}
 ├── global
-│   ├── config        # 설정 (WebClient 등)
-│   ├── exception     # 공통 예외 처리 (GlobalExceptionHandler, ErrorCode, ErrorResponse)
-│   ├── response      # 공통 응답 객체 (ApiResponse)
-│   └── persistence   # 공통 엔티티 (BaseEntity)
+│   ├── config
+│   │   └── ...
+│   │
+│   ├── entity
+│   │   └── BaseEntity.java
+│   │
+│   ├── response
+│   │   ├── ApiResponseBody.java
+│   │   ├── SuccessCode.java
+│   │   └── ErrorMeta.java
+│   │
+│   ├── exception
+│   │   ├── BusinessException.java
+│   │   ├── GlobalExceptionHandler.java
+│   │   └── ErrorCode.java
+│   │
+│   └── util
+│       └── ...
 │
 └── domain
-    ├── home
-    ├── product
-    ├── cart
-    ├── payment
-    ├── delivery
-    ├── coupon
-    └── user
+    └── {domain-name}
+        ├── controller
+        │   └── ...
+        │
+        ├── service
+        │   └── ...
+        │
+        ├── repository
+        │   └── ...
+        │
+        ├── entity
+        │   └── ...
+        │
+        └── exception
+            ├── {Domain}Exception.java
+            └── {Domain}ErrorCode.java
 ```
 
-각 도메인의 내부 구조는 아래 패턴을 기본으로 합니다.
+---
 
-```
-{domain}
-├── controller
-├── service
-├── repository   # 필요한 경우
-├── entity       # 필요한 경우
-├── dto
-│   ├── request
-│   └── response
-└── exception
-```
+# 클래스 멤버 선언 순서
+
+1. 상수 (`static final`)
+2. `static` 변수
+3. 인스턴스 변수
+4. 생성자
+5. `public` 메서드 (getter/setter는 `public` 메서드 모두 작성 후 마지막에)
+6. `protected` 메서드
+7. package-private 메서드
+8. `private` 메서드
+9. nested 클래스/인터페이스
+
+---
+
+# API URL 설계 규칙
+
+1. 리소스명은 **복수형**으로 작성
+2. 리소스명은 **kebab-case**로 작성
+3. path variable 변수명은 **camelCase**로 작성
+4. 불필요한 상위 리소스를 포함하지 않도록 최소한의 경로로 설계
+5. 리소스 위치 특정 → **path variable** 사용
+6. 리소스 필터링/검색 → **query string** 사용
 
 ---
 
@@ -88,14 +123,7 @@ com.example.naver
 브랜치 형식:
 
 ```
-type/#issueNum-{domain}
-```
-
-예시:
-```
-feat/#12/home
-feat/#13/product
-feat/#14/cart
+type/#issueNum/{domain}
 ```
 
 ### Type
@@ -114,12 +142,9 @@ feat/#14/cart
 | domain | 대상 |
 |--------|------|
 | home | 홈 화면 |
-| product | 상품 |
+| product | 상품 상세 |
 | cart | 장바구니 |
 | payment | 결제 |
-| delivery | 배송 |
-| coupon | 쿠폰 |
-| user | 사용자 |
 | global | 공통 |
 
 ---
@@ -135,17 +160,6 @@ type(#issueNum/domain): 작업 내용
 ### Subject
 
 커밋 목록만 보아도 어떤 이슈에서 어떤 도메인의 어떤 작업을 했는지 알 수 있게 작성한다.
-
-좋은 예시:
-```
-feat(#12/home): 홈 화면 응답 API 구현
-feat(#13/product): 상품 상세 조회 API 구현
-feat(#14/cart): 장바구니 상품 수량 변경 구현
-fix(#15/payment): 보유 포인트 초과 사용 검증
-refactor(#16/product): 상품 가격 응답 DTO 분리
-docs(#17/swagger): 상품 상세 API 문서 추가
-chore(#18/global): 공통 응답 객체 추가
-```
 
 ### Body
 

@@ -19,19 +19,17 @@
 ```
 src/main/java/com/example/naver
 ├── global
-│   ├── config        # 설정
-│   ├── exception     # 공통 예외 처리
-│   ├── response      # 공통 응답 객체
-│   └── persistence   # 공통 엔티티
+│   ├── config
+│   ├── entity        # BaseEntity
+│   ├── response      # ApiResponseBody, SuccessCode, ErrorMeta
+│   ├── exception     # BusinessException, GlobalExceptionHandler, ErrorCode
+│   └── util
 │
 └── domain
-    ├── home          # 홈
-    ├── product       # 상품
+    ├── home          # 홈 화면
+    ├── product       # 상품 상세
     ├── cart          # 장바구니
-    ├── payment       # 결제
-    ├── delivery      # 배송
-    ├── coupon        # 쿠폰
-    └── user          # 사용자
+    └── payment       # 결제
 ```
 
 ---
@@ -65,11 +63,4 @@ type/#issueNum/domain
 
 ```
 type(#issueNum/domain): 작업 내용
-```
-
-예시:
-
-```
-feat(#12/home): 홈 화면 응답 API 구현
-fix(#15/payment): 보유 포인트 초과 사용 검증
 ```
