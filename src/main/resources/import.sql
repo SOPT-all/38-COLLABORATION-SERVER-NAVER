@@ -6,3 +6,5 @@ INSERT INTO recommendation_sections (id, user_id) VALUES (1, 1);
 INSERT INTO recommendation_products (id, recommendation_section_id, product_id, display_order) VALUES (1, 1, 10023, 1);
 INSERT INTO recommendation_products (id, recommendation_section_id, product_id, display_order) VALUES (2, 1, 10024, 2);
 INSERT INTO recommendation_products (id, recommendation_section_id, product_id, display_order) VALUES (3, 1, 10025, 3);
+INSERT INTO orders (id, available_amount, available_point, available_money, hidden_point, all_use_amount) VALUES (1, 87, 80, 0, 7, 87);
+INSERT INTO pending_points (id, order_id, total_point, purchase_total_point, basic_point, npay_money_point, review_point, membership_point) VALUES (1, 1, 1472, 722, 289, 433, 750, 1156);
