@@ -6,7 +6,6 @@ import com.sopt.collaboration.domain.home.entity.RecommendationProduct;
 import com.sopt.collaboration.domain.home.entity.RecommendationSection;
 import com.sopt.collaboration.domain.home.entity.User;
 import com.sopt.collaboration.domain.home.repository.RecommendationSectionRepository;
-import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class HomeService {
 
     private static final Long FIXED_USER_ID = 1L;
+    private static final boolean FIXED_TOMORROW_DELIVERY = true;
 
     private final RecommendationSectionRepository recommendationSectionRepository;
 
@@ -45,7 +45,7 @@ public class HomeService {
                 product.getOriginalPrice(),
                 product.getDiscountRate(),
                 product.getSalePrice(),
-                product.getArrivalDate().equals(LocalDate.now().plusDays(1))
+                FIXED_TOMORROW_DELIVERY
         );
     }
 }
