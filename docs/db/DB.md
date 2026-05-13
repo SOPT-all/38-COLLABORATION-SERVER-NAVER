@@ -196,12 +196,13 @@
 |    | available_money | INT | NOT NULL | 사용 가능 머니 | 47000 |
 |    | hidden_point | INT | NOT NULL | 숨은 포인트 금액 | 500 |
 |    | all_use_amount | INT | NOT NULL | 전액 사용 시 적용 금액 | 50000 |
+|    | deferred_payment_available_amount | INT | NOT NULL | 후불결제 이용 가능 금액 | 300000 |
 
 **Example Row**
 
-| id | available_amount | available_point | available_money | hidden_point | all_use_amount |
-|----|-----------------|----------------|----------------|--------------|----------------|
-| 1 | 50000 | 3000 | 47000 | 500 | 50000 |
+| id | available_amount | available_point | available_money | hidden_point | all_use_amount | deferred_payment_available_amount |
+|----|-----------------|----------------|----------------|--------------|----------------|-----------------------------------|
+| 1 | 50000 | 3000 | 47000 | 500 | 50000 | 300000 |
 
 ---
 
