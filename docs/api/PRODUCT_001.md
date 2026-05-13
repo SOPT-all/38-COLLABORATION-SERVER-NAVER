@@ -35,7 +35,7 @@ GET /api/products/1001
 ### Response Body
 
 | Name | Type | Required | Description | Example |
-|------|------|----------|-------------|---------|
+|------|------|--------|-------------|---------|
 | success | Boolean | Y | 요청 성공 여부 | `true` |
 | status | Integer | Y | HTTP 상태 코드 | `200` |
 | message | String | Y | 응답 메시지 | `"요청이 성공했습니다."` |
@@ -62,7 +62,8 @@ GET /api/products/1001
 | data.unit | String | Y | 단위 (g, ml 등) | `"ml"` |
 | data.pointBenefit | Object | Y | 적립 혜택 정보 | - |
 | data.pointBenefit.maxPoint | Integer | Y | 최대 적립 가능 포인트 | `1608` |
-
+|  data.cardBenefits  | Array | Y |카드 혜택 목록  | - | 
+|  data.cardBenefits[].title  | String | Y |카드 혜택 문구  |`"라이프플랜 카드 최대 374원 추가 적립(2%)"` |
 ### Success Response Example
 
 **200 OK**
@@ -96,7 +97,15 @@ GET /api/products/1001
     },
     "pointBenefit": {
       "maxPoint": 1608
-    }
+    },
+    "cardBenefits": [
+      {
+        "title": "라이프플랜 카드 최대 374원 추가 적립(2%)"
+      },
+      {
+        "title": "최대 12개월 무이자 할부 · 60개월 특별금리"
+      }
+    ]
   }
 }
 ```
