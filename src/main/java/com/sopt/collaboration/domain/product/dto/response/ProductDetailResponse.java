@@ -1,4 +1,6 @@
 package com.sopt.collaboration.domain.product.dto.response;
+import java.util.List;
+import com.sopt.collaboration.domain.product.dto.response.CardBenefitResponse;
 
 public record ProductDetailResponse(
 
@@ -24,6 +26,8 @@ public record ProductDetailResponse(
         String unit,
 
         DeliveryResponse delivery,
-        PointBenefitResponse pointBenefit
+        PointBenefitResponse pointBenefit,
+
+        List<CardBenefitResponse> cardBenefits
 ) {
 }
