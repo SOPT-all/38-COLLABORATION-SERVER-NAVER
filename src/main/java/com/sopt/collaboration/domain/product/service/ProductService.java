@@ -1,14 +1,18 @@
 package com.sopt.collaboration.domain.product.service;
 
+import com.sopt.collaboration.domain.product.dto.response.CardBenefitResponse;
 import com.sopt.collaboration.domain.product.dto.response.DeliveryResponse;
 import com.sopt.collaboration.domain.product.dto.response.PointBenefitResponse;
 import com.sopt.collaboration.domain.product.dto.response.ProductDetailResponse;
 import com.sopt.collaboration.domain.home.entity.Product;
 import com.sopt.collaboration.domain.product.exception.ProductNotFoundException;
+import com.sopt.collaboration.domain.product.repository.CardBenefitRepository;
 import com.sopt.collaboration.domain.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final CardBenefitRepository cardBenefitRepository;
 
     public ProductDetailResponse getProductDetail(Long productId) {
         Product product = productRepository.findById(productId)
@@ -30,6 +35,11 @@ public class ProductService {
         PointBenefitResponse pointBenefit = new PointBenefitResponse(
                 product.getMaxPoint()
         );
+
+        List<CardBenefitResponse> cardBenefits = cardBenefitRepository.findAllByProductId(productId)
+                .stream()
+                .map(cardBenefit -> new CardBenefitResponse(cardBenefit.getTitle()))
+                .toList();
 
         return new ProductDetailResponse(
                 product.getId(),
@@ -49,7 +59,8 @@ public class ProductService {
                 product.getUnitQuantity(),
                 product.getUnit(),
                 delivery,
-                pointBenefit
+                pointBenefit,
+                cardBenefits
         );
     }
 }
