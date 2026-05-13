@@ -69,14 +69,13 @@
 | PK | id | BIGINT | NOT NULL | 카드 혜택 ID | 1 |
 | FK | product_id | BIGINT | NOT NULL | 상품 ID | 101 |
 |    | title | VARCHAR | NOT NULL | 카드 혜택 문구 | 현대카드 2% 적립 |
-|    | display_order | INT | NOT NULL | 노출 순서 | 1 |
 
 **Example Row**
 
-| id | product_id | title | display_order |
-|----|-----------|-------|---------------|
-| 1 | 101 | 현대카드 2% 적립 | 1 |
-| 2 | 101 | 삼성카드 5만원 이상 3개월 무이자 | 2 |
+| id | product_id | title |
+|----|-----------|-------|
+| 1 | 101 | 현대카드 2% 적립 |
+| 2 | 101 | 삼성카드 5만원 이상 3개월 무이자 |
 
 ---
 
