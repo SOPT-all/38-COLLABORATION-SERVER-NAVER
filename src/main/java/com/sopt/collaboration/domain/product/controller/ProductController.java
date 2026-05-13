@@ -76,7 +76,7 @@ public class ProductController {
     public ApiResponseBody<ProductDetailResponse, Void> getProductDetail(
             @Parameter(
                     description = "상품 ID",
-                    example = "10023"
+                    example = "1022"
             )
             @PathVariable Long productId
     ) {
