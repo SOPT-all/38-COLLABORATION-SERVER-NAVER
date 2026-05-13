@@ -30,4 +30,7 @@ public class Order extends BaseEntity {
 
     @Column(name = "all_use_amount", nullable = false)
     private Integer allUseAmount;
+
+    @Column(name = "deferred_payment_available_amount", nullable = false)
+    private Integer deferredPaymentAvailableAmount;
 }
