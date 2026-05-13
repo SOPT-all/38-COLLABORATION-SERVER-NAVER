@@ -8,3 +8,9 @@ INSERT INTO recommendation_products (id, recommendation_section_id, product_id, 
 INSERT INTO recommendation_products (id, recommendation_section_id, product_id, display_order) VALUES (3, 1, 10025, 3);
 INSERT INTO orders (id, available_amount, available_point, available_money, hidden_point, all_use_amount) VALUES (1, 87, 80, 0, 7, 87);
 INSERT INTO pending_points (id, order_id, total_point, purchase_total_point, basic_point, npay_money_point, review_point, membership_point) VALUES (1, 1, 1472, 722, 289, 433, 750, 1156);
+INSERT INTO card_benefits (id, product_id, title) VALUES (1, 10023, '라이프플랜 카드 최대 374원 추가 적립(2%)');
+INSERT INTO card_benefits (id, product_id, title) VALUES (2, 10023, '최대 12개월 무이자 할부 · 60개월 특별금리');
+INSERT INTO card_benefits (id, product_id, title) VALUES (3, 10024, '라이프플랜 카드 최대 374원 추가 적립(2%)');
+INSERT INTO card_benefits (id, product_id, title) VALUES (4, 10024, '최대 12개월 무이자 할부 · 60개월 특별금리');
+INSERT INTO card_benefits (id, product_id, title) VALUES (5, 10025, '라이프플랜 카드 최대 374원 추가 적립(2%)');
+INSERT INTO card_benefits (id, product_id, title) VALUES (6, 10025, '최대 12개월 무이자 할부 · 60개월 특별금리');
