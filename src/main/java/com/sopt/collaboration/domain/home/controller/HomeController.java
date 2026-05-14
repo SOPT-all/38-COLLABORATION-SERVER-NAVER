@@ -15,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Home", description = "홈 화면 관련 API")
@@ -79,5 +80,79 @@ public class HomeController {
     @GetMapping("/recommendations")
     public ResponseEntity<ApiResponseBody<RecommendationResponse, Void>> getRecommendations() {
         return ResponseEntity.ok(ApiResponseBody.ok(SuccessCode.OK, homeService.getRecommendations()));
+    }
+
+    @Operation(summary = "카테고리 조회", description = "홈 화면에 노출할 카테고리 목록을 반환한다. 기본 상위 10개, 전체 요청 시 25개를 반환한다.")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "요청 성공",
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = ApiResponseBody.class),
+                            examples = @ExampleObject(value = """
+                                    {
+                                      "success": true,
+                                      "status": 200,
+                                      "message": "요청이 성공했습니다.",
+                                      "data": {
+                                        "categories": [
+                                          {
+                                            "categoryId": 1,
+                                            "name": "행사",
+                                            "iconUrl": "https://example.com/icons/category/1.png"
+                                          }
+                                        ],
+                                        "totalCount": 10,
+                                        "isExpanded": false
+                                      }
+                                    }
+                                    """)
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "expand 파라미터 값이 유효하지 않음",
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            examples = @ExampleObject(value = """
+                                    {
+                                      "success": false,
+                                      "status": 400,
+                                      "message": "expand 파라미터 값이 유효하지 않습니다.",
+                                      "code": "HOM_400_001",
+                                      "meta": {
+                                        "path": "/api/home/categories",
+                                        "timestamp": 1746835200000
+                                      }
+                                    }
+                                    """)
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "서버 내부 오류",
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            examples = @ExampleObject(value = """
+                                    {
+                                      "success": false,
+                                      "status": 500,
+                                      "message": "서버 내부 오류가 발생했습니다.",
+                                      "code": "COM_500_001",
+                                      "meta": {
+                                        "path": "/api/home/categories",
+                                        "timestamp": 1746835200000
+                                      }
+                                    }
+                                    """)
+                    )
+            )
+    })
+    @GetMapping("/categories")
+    public ResponseEntity<ApiResponseBody<CategoryResponse, Void>> getCategories(
+            @RequestParam(required = false) String expand
+    ) {
+        return ResponseEntity.ok(ApiResponseBody.ok(SuccessCode.OK, homeService.getCategories(expand)));
     }
 }
