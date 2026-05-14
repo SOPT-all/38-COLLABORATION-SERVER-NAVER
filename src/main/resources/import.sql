@@ -52,9 +52,9 @@ VALUES
 
     (1025, '리쥬엑스', 'https://i.ibb.co/BHvxF0wz/2026-05-13-1-28-40.png', '스페인 엑스트라버진 올리브오일 100% 캡슐 리쥬엑스 올리브유 1000mg x 30캡슐', 4.78, 4.78, 8004, 142200, 7900, NULL, 0, FALSE, NULL, 142200, 1, '개', FALSE, '2026-05-15', '2026-05-13 13:59:59', 1098);
 INSERT INTO recommendation_sections (id, user_id) VALUES (1, 1);
-INSERT INTO recommendation_products (id, recommendation_section_id, product_id, display_order) VALUES (1, 1, 10023, 1);
-INSERT INTO recommendation_products (id, recommendation_section_id, product_id, display_order) VALUES (2, 1, 10024, 2);
-INSERT INTO recommendation_products (id, recommendation_section_id, product_id, display_order) VALUES (3, 1, 10025, 3);
+INSERT INTO recommendation_products (id, recommendation_section_id, product_id, display_order) VALUES (1, 1, 1001, 1);
+INSERT INTO recommendation_products (id, recommendation_section_id, product_id, display_order) VALUES (2, 1, 1002, 2);
+INSERT INTO recommendation_products (id, recommendation_section_id, product_id, display_order) VALUES (3, 1, 1003, 3);
 INSERT INTO orders (id, available_amount, available_point, available_money, hidden_point, all_use_amount) VALUES (101, 4858, 70, 4788, 0, 4858);
 INSERT INTO orders (id, available_amount, available_point, available_money, hidden_point, all_use_amount) VALUES (102, 150, 70, 80, 0, 150);
 INSERT INTO pending_points (id, order_id, total_point, purchase_total_point, basic_point, npay_money_point, review_point, membership_point) VALUES (201, 101, 1356, 268, 197, 71, 300, 788);
