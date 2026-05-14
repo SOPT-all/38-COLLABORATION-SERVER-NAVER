@@ -3,7 +3,7 @@ package com.sopt.collaboration.domain.home.service;
 import com.sopt.collaboration.domain.home.controller.CategoryResponse;
 import com.sopt.collaboration.domain.home.controller.RecommendationResponse;
 import com.sopt.collaboration.domain.home.entity.Category;
-import com.sopt.collaboration.domain.home.entity.Product;
+import com.sopt.collaboration.domain.product.entity.Product;
 import com.sopt.collaboration.domain.home.entity.RecommendationProduct;
 import com.sopt.collaboration.domain.home.entity.RecommendationSection;
 import com.sopt.collaboration.domain.home.entity.User;

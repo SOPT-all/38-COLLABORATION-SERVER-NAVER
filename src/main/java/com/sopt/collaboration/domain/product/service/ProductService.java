@@ -4,7 +4,7 @@ import com.sopt.collaboration.domain.product.dto.response.CardBenefitResponse;
 import com.sopt.collaboration.domain.product.dto.response.DeliveryResponse;
 import com.sopt.collaboration.domain.product.dto.response.PointBenefitResponse;
 import com.sopt.collaboration.domain.product.dto.response.ProductDetailResponse;
-import com.sopt.collaboration.domain.home.entity.Product;
+import com.sopt.collaboration.domain.product.entity.Product;
 import com.sopt.collaboration.domain.product.exception.ProductNotFoundException;
 import com.sopt.collaboration.domain.product.repository.CardBenefitRepository;
 import com.sopt.collaboration.domain.product.repository.ProductRepository;

@@ -1,4 +1,4 @@
-package com.sopt.collaboration.domain.home.entity;
+package com.sopt.collaboration.domain.product.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
