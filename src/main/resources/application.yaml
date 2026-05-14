@@ -22,5 +22,4 @@ server:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
-  api-docs:
-    server-url: https://sopt-naver2.p-e.kr
+    url: /v3/api-docs
