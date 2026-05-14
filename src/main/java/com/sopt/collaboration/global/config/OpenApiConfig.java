@@ -17,6 +17,6 @@ public class OpenApiConfig {
                         .title("SOPT 38기 합동 세미나 API")
                         .version("v1")
                         .description("LET'S SOPT 38기 합동세미나 모바일 웹 2조 네이버"))
-                .servers(List.of(new Server().url("http://localhost:8080")));
+                .servers(List.of(new Server().url("https://sopt-naver2.p-e.kr")));
     }
 }
