@@ -43,10 +43,8 @@ public class Product {
     @Column(nullable = false)
     private Integer originalPrice;
 
-    @Column(nullable = false)
     private Integer salePrice;
 
-    @Column(nullable = false)
     private Integer memberPrice;
 
     @Column(nullable = false)
@@ -71,6 +69,5 @@ public class Product {
 
     private LocalDateTime deadlineAt;
 
-    @Column(nullable = false)
     private Integer maxPoint;
 }
