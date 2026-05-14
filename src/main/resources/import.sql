@@ -34,7 +34,7 @@ INSERT INTO orders (id, available_amount, available_point, available_money, hidd
 INSERT INTO pending_points (id, order_id, total_point, purchase_total_point, basic_point, npay_money_point, review_point, membership_point) VALUES (201, 101, 1356, 268, 197, 71, 300, 788);
 INSERT INTO pending_points (id, order_id, total_point, purchase_total_point, basic_point, npay_money_point, review_point, membership_point) VALUES (202, 102, 791, 291, 205, 86, 500, 0);
 INSERT INTO card_benefits (id, product_id, title) VALUES (1, 1007, '라인프렌즈 카드 최대 249원 추가 적립(2%)');
-INSERT INTO card_benefits (id, 지, title) VALUES (2, 1008, '네이버페이 쇼핑엔로카 12개월 무이자 할부');
+INSERT INTO card_benefits (id, product_id, title) VALUES (2, 1008, '네이버페이 쇼핑엔로카 12개월 무이자 할부');
 INSERT INTO card_benefits (id, product_id, title) VALUES (3, 1011, '라인프렌즈 카드 최대 77원 추가 적립(2%)');
 INSERT INTO card_benefits (id, product_id, title) VALUES (4, 1013, '라인프렌즈 카드 최대 6,259원 추가 적립(4%)');
 INSERT INTO card_benefits (id, product_id, title) VALUES (5, 1022, '라인프렌즈 카드 최대 1,920원 추가 적립(4%)');
