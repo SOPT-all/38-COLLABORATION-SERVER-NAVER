@@ -171,14 +171,15 @@
 | PK | id | BIGINT | NOT NULL | 프로모션 상품 ID | 1 |
 | FK | promotion_id | BIGINT | NOT NULL | 프로모션 ID | 1 |
 | FK | product_id | BIGINT | NOT NULL | 상품 ID | 101 |
+|    | item_tag | VARCHAR | NULL | 상품 부속 태그 (브랜드데이, +세일 등) | 브랜드데이 |
 |    | display_order | INT | NOT NULL | 노출 순서 | 1 |
 
 **Example Row**
 
-| id | promotion_id | product_id | display_order |
-|----|-------------|-----------|---------------|
-| 1 | 1 | 101 | 1 |
-| 2 | 1 | 102 | 2 |
+| id | promotion_id | product_id | item_tag | display_order |
+|----|-------------|-----------|----------|---------------|
+| 1 | 1 | 101 | 브랜드데이 | 1 |
+| 2 | 1 | 102 | +세일 | 2 |
 
 ---
 
