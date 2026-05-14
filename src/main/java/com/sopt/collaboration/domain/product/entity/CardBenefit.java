@@ -1,6 +1,5 @@
 package com.sopt.collaboration.domain.product.entity;
 
-import com.sopt.collaboration.domain.home.entity.Product;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
