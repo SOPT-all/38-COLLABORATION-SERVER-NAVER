@@ -302,6 +302,7 @@ GET /api/home/promotions
 | data.promotions[].items[].itemId | Long | Y | 상품 ID | `20011` |
 | data.promotions[].items[].name | String | Y | 상품명 | `"프리미엄 올리브오일 500ml"` |
 | data.promotions[].items[].imageUrl | String | Y | 상품 이미지 URL | `"https://..."` |
+| data.promotions[].items[].tag | String | N | 상품 부속 태그 (없으면 `null`) | `"브랜드데이"` |
 | data.promotions[].items[].originalPrice | Integer | Y | 정가 | `18000` |
 | data.promotions[].items[].discountRate | Integer | Y | 할인율 | `38` |
 | data.promotions[].items[].discountedPrice | Integer | Y | 할인가 | `34800` |
@@ -327,6 +328,7 @@ GET /api/home/promotions
             "itemId": 20011,
             "name": "다비다 호텔 달걀 키즈 등 6종",
             "imageUrl": "https://example.com/images/item/20011.jpg",
+            "tag": "브랜드데이",
             "originalPrice": 56100,
             "discountRate": 38,
             "discountedPrice": 34800,
@@ -336,6 +338,7 @@ GET /api/home/promotions
             "itemId": 20012,
             "name": "다비다 퍼퓸 섬유유연제 4종",
             "imageUrl": "https://example.com/images/item/20012.jpg",
+            "tag": "+세일",
             "originalPrice": 56500,
             "discountRate": 42,
             "discountedPrice": 32800,
@@ -345,6 +348,7 @@ GET /api/home/promotions
             "itemId": 20013,
             "name": "다비다 호텔컬렉션 섬유유연제",
             "imageUrl": "https://example.com/images/item/20013.jpg",
+            "tag": null,
             "originalPrice": 27700,
             "discountRate": 21,
             "discountedPrice": 21900,

@@ -1,16 +1,21 @@
 package com.sopt.collaboration.domain.home.service;
 
 import com.sopt.collaboration.domain.home.controller.CategoryResponse;
+import com.sopt.collaboration.domain.home.controller.PromotionResponse;
 import com.sopt.collaboration.domain.home.controller.RecommendationResponse;
 import com.sopt.collaboration.domain.home.entity.Category;
 import com.sopt.collaboration.domain.product.entity.Product;
+import com.sopt.collaboration.domain.home.entity.Promotion;
+import com.sopt.collaboration.domain.home.entity.PromotionProduct;
 import com.sopt.collaboration.domain.home.entity.RecommendationProduct;
 import com.sopt.collaboration.domain.home.entity.RecommendationSection;
 import com.sopt.collaboration.domain.home.entity.User;
 import com.sopt.collaboration.domain.home.exception.HomeErrorCode;
 import com.sopt.collaboration.domain.home.exception.HomeException;
 import com.sopt.collaboration.domain.home.repository.CategoryRepository;
+import com.sopt.collaboration.domain.home.repository.PromotionRepository;
 import com.sopt.collaboration.domain.home.repository.RecommendationSectionRepository;
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,6 +32,7 @@ public class HomeService {
 
     private final RecommendationSectionRepository recommendationSectionRepository;
     private final CategoryRepository categoryRepository;
+    private final PromotionRepository promotionRepository;
 
     @Transactional(readOnly = true)
     public RecommendationResponse getRecommendations() {
@@ -57,6 +63,48 @@ public class HomeService {
                 .toList();
 
         return new CategoryResponse(items, items.size(), isExpanded);
+    }
+
+    @Transactional(readOnly = true)
+    public PromotionResponse getPromotions() {
+        List<Promotion> promotions = promotionRepository.findByEndsAtAfterOrderByEndsAtAsc(LocalDateTime.now());
+
+        if (promotions.isEmpty()) {
+            throw new HomeException(HomeErrorCode.NO_ACTIVE_PROMOTION);
+        }
+
+        List<PromotionResponse.Promotion> items = promotions.stream()
+                .map(this::toPromotion)
+                .toList();
+
+        return new PromotionResponse(items);
+    }
+
+    private PromotionResponse.Promotion toPromotion(Promotion promotion) {
+        List<PromotionResponse.Item> items = promotion.getPromotionProducts().stream()
+                .map(this::toPromotionItem)
+                .toList();
+
+        return new PromotionResponse.Promotion(
+                promotion.getId(),
+                promotion.getTag(),
+                promotion.getEndsAt().toString(),
+                items
+        );
+    }
+
+    private PromotionResponse.Item toPromotionItem(PromotionProduct promotionProduct) {
+        Product product = promotionProduct.getProduct();
+        return new PromotionResponse.Item(
+                product.getId(),
+                product.getName(),
+                product.getThumbnailImageUrl(),
+                promotionProduct.getItemTag(),
+                product.getOriginalPrice(),
+                product.getDiscountRate(),
+                product.getSalePrice(),
+                FIXED_TOMORROW_DELIVERY
+        );
     }
 
     private RecommendationResponse.Item toItem(RecommendationProduct recommendationProduct) {
