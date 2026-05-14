@@ -8,6 +8,16 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/collaboration
+    username: root
+    password: ${MYSQL_ROOT_PASSWORD}
+  sql:
+    init:
+      mode: always
+
+server:
+  forward-headers-strategy: framework
 
 springdoc:
   swagger-ui:
