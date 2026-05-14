@@ -7,6 +7,7 @@ public record PointResponse(
         Integer availableMoney,
         Integer hiddenPoint,
         Integer allUseAmount,
+        Integer deferredPaymentAvailableAmount,
         ExpectedPointResponse expectedPoint
 ) {
 }

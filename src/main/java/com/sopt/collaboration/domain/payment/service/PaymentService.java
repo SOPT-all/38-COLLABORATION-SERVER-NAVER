@@ -47,6 +47,7 @@ public class PaymentService {
                 order.getAvailableMoney(),
                 order.getHiddenPoint(),
                 order.getAllUseAmount(),
+                order.getDeferredPaymentAvailableAmount(),
                 expectedPoint
         );
     }
