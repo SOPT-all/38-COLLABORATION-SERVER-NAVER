@@ -1,5 +1,6 @@
 package com.sopt.collaboration.domain.home.entity;
 
+import com.sopt.collaboration.domain.product.entity.Product;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
