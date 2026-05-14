@@ -161,4 +161,9 @@ public class HomeController {
     ) {
         return ResponseEntity.ok(ApiResponseBody.ok(SuccessCode.OK, homeService.getCategories(expand)));
     }
+
+    @GetMapping("/promotions")
+    public ResponseEntity<ApiResponseBody<PromotionResponse, Void>> getPromotions() {
+        return ResponseEntity.ok(ApiResponseBody.ok(SuccessCode.OK, homeService.getPromotions()));
+    }
 }
