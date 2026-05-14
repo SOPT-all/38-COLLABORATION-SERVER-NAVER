@@ -4,6 +4,7 @@ import com.sopt.collaboration.domain.home.service.HomeService;
 import com.sopt.collaboration.global.response.ApiResponseBody;
 import com.sopt.collaboration.global.response.SuccessCode;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -151,6 +152,11 @@ public class HomeController {
     })
     @GetMapping("/categories")
     public ResponseEntity<ApiResponseBody<CategoryResponse, Void>> getCategories(
+            @Parameter(
+                    description = "전체 카테고리 노출 여부. `true` 입력 시 전체 25개 반환, `false` 또는 미입력 시 상위 10개 반환. 그 외 값은 400 (HOM_400_001).",
+                    example = "false",
+                    schema = @Schema(type = "string", allowableValues = {"true", "false"})
+            )
             @RequestParam(required = false) String expand
     ) {
         return ResponseEntity.ok(ApiResponseBody.ok(SuccessCode.OK, homeService.getCategories(expand)));
