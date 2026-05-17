@@ -32,6 +32,25 @@
 6. 각 작업 완료 후 반드시 멈추세요.
 7. 다음 단계 진행 전 확인을 받으세요.
 
+## 표준 작업 흐름
+
+모든 작업은 다음 순서로 진행합니다.
+
+1. 새 이슈 생성 (`[TYPE]` 형식, 이슈 템플릿 기반)
+2. 브랜치 생성: `type/#{issueNum}/{domain}`
+3. 기능 구현
+4. 커밋: `type(#{issueNum}/{domain}): 작업 내용`
+5. PR 생성 (reviewer 지정, PR 템플릿 기반)
+6. 머지 후 로컬 브랜치 정리
+
+### 예시: EC2 배포 스크립트 추가
+
+1. `[CHORE]` 이슈 생성
+2. 브랜치: `chore/#{issueNum}/global`
+3. `scripts/deploy.sh` 생성 + `chmod +x scripts/deploy.sh`
+4. 커밋: `chore(#{issueNum}/global): EC2 배포 스크립트 추가`
+5. PR 생성 (reviewer: aneykrap)
+
 ## 커밋 규칙
 
 8. 커밋 생성 전, 변경 요약을 먼저 제시하고 승인을 받으세요.
